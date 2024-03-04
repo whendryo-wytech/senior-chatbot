@@ -28,8 +28,18 @@ class ConversationController extends Controller
             'payload' => json_encode($request->all(), JSON_THROW_ON_ERROR),
         ]);
 
-        if ($request->json('step') === '0') {
-            return Steps::step0($request);
+        $steps = new Steps($request);
+
+        if ($request->json('step') === 'validationCPF') {
+            return $steps->stepValidationCPF();
+        }
+
+        if ($request->json('step') === 'validationBirthdate') {
+            return $steps->stepValidationCPF();
+        }
+
+        if ($request->json('step') === 'SelectHirePaperwork') {
+            return $steps->stepSelectHirePaperwork();
         }
 
         //        session_api()->put($token, [

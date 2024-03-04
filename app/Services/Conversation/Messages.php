@@ -6,7 +6,44 @@ use App\Enum\Langs;
 
 class Messages
 {
-    public static function getFirstServiceMessage(string $lang): array
+    public static function getValidationCPF(string $lang): array
+    {
+        if ($lang === Langs::PT_BR->value) {
+            return [
+                'type' => 'TEXT',
+                'text' => [
+                    "Digite seu CPF"
+                ]
+            ];
+        }
+        if ($lang === Langs::ES_ES->value) {
+            return [
+                'type' => 'TEXT',
+                'text' => [
+                    "Introduzca su CPF"
+                ]
+            ];
+        }
+        if ($lang === Langs::EN_US->value) {
+            return [
+                'type' => 'BUTTON',
+                'text' => [
+                    "Enter your CPF"
+                ],
+            ];
+        }
+        if ($lang === Langs::CR_HA->value) {
+            return [
+                'type' => 'BUTTON',
+                'text' => [
+                    "Antre CPF ou"
+                ]
+            ];
+        }
+        return [];
+    }
+
+    public static function getSelectHirePaperworkMessage(string $lang): array
     {
         if ($lang === Langs::PT_BR->value) {
             return [
