@@ -10,7 +10,7 @@ class Messages
     {
         if ($lang === Langs::PT_BR->value) {
             return [
-                'type' => 'TEXT',
+                'type' => 'PLAINTEXT',
                 'text' => [
                     "Digite seu CPF"
                 ]
@@ -18,7 +18,7 @@ class Messages
         }
         if ($lang === Langs::ES_ES->value) {
             return [
-                'type' => 'TEXT',
+                'type' => 'PLAINTEXT',
                 'text' => [
                     "Introduzca su CPF"
                 ]
@@ -26,7 +26,7 @@ class Messages
         }
         if ($lang === Langs::EN_US->value) {
             return [
-                'type' => 'BUTTON',
+                'type' => 'PLAINTEXT',
                 'text' => [
                     "Enter your CPF"
                 ],
@@ -34,7 +34,7 @@ class Messages
         }
         if ($lang === Langs::CR_HA->value) {
             return [
-                'type' => 'BUTTON',
+                'type' => 'PLAINTEXT',
                 'text' => [
                     "Antre CPF ou"
                 ]
