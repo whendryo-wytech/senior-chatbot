@@ -35,7 +35,7 @@ class ConversationController extends Controller
         }
 
         if ($request->json('step') === 'validationBirthdate') {
-            return $steps->stepValidationCPF();
+            return $steps->stepValidationBirthdate();
         }
 
         if ($request->json('step') === 'SelectHirePaperwork') {

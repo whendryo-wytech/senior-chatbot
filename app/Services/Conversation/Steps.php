@@ -8,11 +8,23 @@ use Illuminate\Http\Request;
 class Steps
 {
     private Request $request;
+    private string $language;
+    private string $conversationId;
 
 
+    /**
+     * @throws \JsonException
+     */
     public function __construct(Request $request)
     {
         $this->request = $request;
+        $this->conversationId = $this->request->json('default')['conversationId'];
+        if ($this->request->json('language')) {
+            session_api()->put($this->conversationId, [
+                'language' => $this->request->json('language')
+            ]);
+        }
+        $this->language = session_api()->get($this->conversationId)->language;
     }
 
     /**
@@ -20,11 +32,12 @@ class Steps
      */
     public function stepValidationCPF(): JsonResponse
     {
-        $conversationId = $this->request->json('default')['conversationId'];
-        session_api()->put($conversationId, [
-            'language' => $this->request->json('language')
-        ]);
-        return response()->json(Messages::getValidationCPF(session_api()->get($conversationId)->language));
+        return response()->json(Messages::getValidationCPF($this->language));
+    }
+
+    public function stepValidationBirthdate(): JsonResponse
+    {
+        return response()->json(Messages::getValidationCPF($this->language));
     }
 
     /**
@@ -32,7 +45,7 @@ class Steps
      */
     public function stepSelectHirePaperwork(): JsonResponse
     {
-        return response()->json(Messages::getSelectHirePaperworkMessage($this->request->json('language')));
+        return response()->json(Messages::getSelectHirePaperworkMessage($this->language));
     }
 
 }

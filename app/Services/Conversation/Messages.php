@@ -43,6 +43,43 @@ class Messages
         return [];
     }
 
+    public static function getBirthdate(string $lang): array
+    {
+        if ($lang === Langs::PT_BR->value) {
+            return [
+                'type' => 'PLAINTEXT',
+                'text' => [
+                    "Digite sua data de nascimento"
+                ]
+            ];
+        }
+        if ($lang === Langs::ES_ES->value) {
+            return [
+                'type' => 'PLAINTEXT',
+                'text' => [
+                    "Ingrese su fecha de nacimiento"
+                ]
+            ];
+        }
+        if ($lang === Langs::EN_US->value) {
+            return [
+                'type' => 'PLAINTEXT',
+                'text' => [
+                    "Enter your birth date"
+                ],
+            ];
+        }
+        if ($lang === Langs::CR_HA->value) {
+            return [
+                'type' => 'PLAINTEXT',
+                'text' => [
+                    "Antre dat nesans ou"
+                ]
+            ];
+        }
+        return [];
+    }
+
     public static function getSelectHirePaperworkMessage(string $lang): array
     {
         if ($lang === Langs::PT_BR->value) {
