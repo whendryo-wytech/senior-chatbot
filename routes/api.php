@@ -24,8 +24,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
             ]);
         });
     });
-    Route::prefix('conversation')->group(callback: function () {
-        Route::post('/', [ConversationController::class, 'store'])
-            ->name('conversation.store.post');
-    });
+});
+
+Route::prefix('conversation')->group(callback: function () {
+    Route::post('/', [ConversationController::class, 'store'])
+        ->name('conversation.store.post');
 });
