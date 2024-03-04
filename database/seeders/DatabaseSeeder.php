@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Employee;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        Employee::truncate();
         UserProfile::truncate();
         User::truncate();
         $user = User::create([
@@ -32,5 +34,6 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user->id,
             'token'   => $token->plainTextToken
         ]);
+        Employee::factory(10)->create();
     }
 }
