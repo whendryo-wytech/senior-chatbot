@@ -20,6 +20,7 @@ class Steps
         $this->request = $request;
         $this->conversationId = $this->request->json('default')['conversationId'];
         if ($this->request->json('language')) {
+            session_api()->delete($this->conversationId);
             session_api()->put($this->conversationId, [
                 'language' => $this->request->json('language')
             ]);

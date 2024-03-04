@@ -2,6 +2,8 @@
 
 namespace App\Services\Session;
 
+use Psr\SimpleCache\InvalidArgumentException;
+
 class Session
 {
     /**
@@ -26,6 +28,14 @@ class Session
             return json_decode(cdecrypt(cache(md5($key))), false, 512, JSON_THROW_ON_ERROR);
         }
         return null;
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public static function delete(string $key): void
+    {
+        cache()->delete(md5($key));
     }
 
 }
