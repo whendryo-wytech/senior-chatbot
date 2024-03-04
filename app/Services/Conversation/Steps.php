@@ -21,6 +21,9 @@ class Steps
     public function stepValidationCPF(): JsonResponse
     {
         $conversationId = $this->request->json('default')['conversationId'];
+        session_api()->put($conversationId, [
+            'language' => $this->request->json('language')
+        ]);
         return response()->json(Messages::getValidationCPF(session_api()->get($conversationId)->language));
     }
 
@@ -29,10 +32,6 @@ class Steps
      */
     public function stepSelectHirePaperwork(): JsonResponse
     {
-        $conversationId = $this->request->json('default')['conversationId'];
-        session_api()->put($conversationId, [
-            'language' => $this->request->json('language')
-        ]);
         return response()->json(Messages::getSelectHirePaperworkMessage($this->request->json('language')));
     }
 
