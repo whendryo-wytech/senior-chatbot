@@ -6,13 +6,13 @@ use App\Enum\Langs;
 
 class Messages
 {
-    public static function getValidationCPF(string $lang): array
+    public static function getValidationCPF(string $lang, string $text): array
     {
         if ($lang === Langs::PT_BR->value) {
             return [
                 'type' => 'PLAINTEXT',
                 'text' => [
-                    "Digite seu CPF"
+                    "O seu CPF é: $text"
                 ]
             ];
         }

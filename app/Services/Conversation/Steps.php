@@ -33,7 +33,7 @@ class Steps
      */
     public function stepValidationCPF(): JsonResponse
     {
-        return response()->json(Messages::getValidationCPF($this->language));
+        return response()->json(Messages::getValidationCPF($this->language, $this->request->json('cpf')));
     }
 
     public function stepValidationBirthdate(): JsonResponse
